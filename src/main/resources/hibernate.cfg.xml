@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- from here -->
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_db?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Shaaz@123</property>
+<!--        <property name="hibernate.connection.pool_size">1</property>-->
+
+        <!-- Hibernate settings -->
+<!--        Queries Mysql ke hisab se generate honi chahiye that's why use MySQL dialect-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+<!--        schema mei change hota hai to update kar dega niche wala line -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+<!--        Jitni sql queries generate hoga wo console par print kar dega.(BTS understanding ke liye)-->
+        <property name="hibernate.show_sql">true</property>
+<!--        SQL jo print hogi console par , usko format kar dega ye -->
+        <property name="hibernate.format_sql">true</property>
+<!--     Ek session automatically managed krlo jo current thread hai uss par - OR - Ye property current session par thread automatically create krne wala hai -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+
+<!--        Jrurat nhi iska i think-->
+        <!-- Mapping entity class -->
+<!--        <mapping class="UserClassHibernate"/>-->
+
+    </session-factory>
+</hibernate-configuration>
