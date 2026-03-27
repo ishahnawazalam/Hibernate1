@@ -27,7 +27,7 @@
         <property name="hibernate.current_session_context_class">thread</property>
 
 
-<!--        Jrurat nhi iska i think-->
+<!--        Jrurat nhi iska i think... Yes jrurate wakehi hee mei nhi tha-->
         <!-- Mapping entity class -->
 <!--        <mapping class="UserClassHibernate"/>-->
 

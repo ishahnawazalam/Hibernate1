@@ -14,7 +14,7 @@ public class HibernateMain {
         // Qk ye session ek connection hai to the database.
         // Transaction start kiya
          session.beginTransaction();
-        // In hibernate, persist ki help se save krte hai db mei, JPA mei save(user) krte hai
+        // In hibernate, persist ki help se save krte hai db mei, Spring Data JPA mei save(user) krte hai. 'session.save()' method hua krta tha Hibernate mei but abb depreciated ho gya
          session.persist(user);
          session.getTransaction().commit();
          System.out.println("User saved: " + user.getId());

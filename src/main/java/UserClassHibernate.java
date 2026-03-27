@@ -13,7 +13,7 @@ public class UserClassHibernate {
     private String name;
 
     // default constructor jruri hai. Hibernate constructor injection nahi karta, sirf no-arg constructor chahiye.
-    // why ? qk hibernate jo hai reflextion ka use krta hai. Reflection means ke ye ek object phle bna leta hai jab application load hoti hai.
+    // why ? qk hibernate jo hai reflection ka use krta hai. Reflection means ke ye ek object phle bna leta hai jab application load hoti hai.
     // It sees ke entity kitni hai application mei(qk usse table bnani hai).To ye class ko phle hee load kar leta hai and uska object phle hee in-memory bna leta hai jiske liye usse ek default constructor ki jrurat parti hai
     public UserClassHibernate() {
     }
@@ -31,6 +31,7 @@ public class UserClassHibernate {
     public String getName() {
         return name;
     }
+    // constructor use kar rhe hai isiliye setter use nhi kiye
 }
 
 /*
@@ -38,3 +39,30 @@ public class UserClassHibernate {
 - Application start hote hi Hibernate saari entities ko scan krke unke in-memory objects bnata hai table mapping ke liye.
 - Reflection object sirf no-arg constructor se hi bnana janta hai, isliye default constructor jruri hota hai.
 */
+
+/*
+-  Why Hibernate ko default constructor chahiye?
+Hibernate entity object ko create karta hai reflection ke through, aur uske liye default (no-arg) constructor required hota hai.
+
+- Simple Samjho
+Hibernate internally aisa karta hai:
+                User user = User.class.getDeclaredConstructor().newInstance();
+
+- Ye tabhi possible hai jab:
+                public User() {}
+exist kare.
+
+Important Rule
+  - Default constructor public ya protected hona chahiye
+  - Private bhi ho sakta hai (Hibernate use kar lega), but best practice public/protected
+ */
+
+/*
+- Reflection Java ka feature hai jisse hum runtime pe class, methods, fields ko inspect aur manipulate kar sakte hain — bina direct access ke.
+
+- Reflection kya kya kar sakta hai?
+  - Object create karna (constructor call)
+  - Private fields access karna
+  - Methods call karna dynamically
+  - Class metadata read karna
+ */
